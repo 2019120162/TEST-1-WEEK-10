@@ -1,6 +1,22 @@
 # TEST-1-WEEK-10
 
-Command-Line Flags:
+# Purpose of this program
+
+Purpose: This program demonstrates a concurrent TCP network port scanner that can:
+- Scan a range of ports or specific ports on a target
+- Grab banners for open ports
+- Output results in both human-readable and JSON formats
+- Use concurrent workers for efficient scanning
+
+## Prerequisites
+
+### Building the Tool
+
+Clone the repository to your local machine:
+
+git clone https://github.com/2019120162/TEST-1-WEEK-10.git
+
+### Command-Line Flags:
 
 -target: Specifies the target IP or hostname.
 
