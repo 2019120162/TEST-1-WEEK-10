@@ -30,7 +30,7 @@ func worker(wg *sync.WaitGroup, tasks chan string, dialer net.Dialer, timeout ti
 		conn, err := dialer.Dial("tcp", addr)
 		if err == nil {
 			// Immediately close the connection
-			conn.Close()
+			defer conn.Close()
 
 			result := ScanResult{
 				Target: addr,
@@ -42,9 +42,9 @@ func worker(wg *sync.WaitGroup, tasks chan string, dialer net.Dialer, timeout ti
 			if bannerGrab {
 				conn.SetReadDeadline(time.Now().Add(timeout)) // Set read deadline based on timeout flag
 				banner := make([]byte, 1024)                  // Buffer to store the banner
-				_, err := conn.Read(banner)
-				if err == nil {
-					result.Banner = string(banner) // Store the banner if successfully read
+				n, err := conn.Read(banner)
+				if err == nil || err.Error() == "EOF" {
+					result.Banner = string(banner[:n]) // Store the banner if successfully read
 				}
 			}
 
