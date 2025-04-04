@@ -15,3 +15,15 @@ Command-Line Flags:
 -json: Outputs results in JSON format (default: false).
 
 -ports: Allows scanning specific ports (optional).
+
+
+# EXAMPLE USAGE
+
+Scan a Range of Ports with Multiple Workers:
+go run main.go -target=example.com -start-port=20 -end-port=80 -workers=50
+
+Scan Specific Ports and Get JSON Output:
+go run main.go -target=example.com -ports=22,80,443 -json=true
+
+Enable Banner Grabbing:
+go run main.go -target=example.com -banner=true
