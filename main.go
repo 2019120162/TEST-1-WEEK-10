@@ -17,10 +17,10 @@ import (
 
 // Struct to hold scan results for output
 type ScanResult struct {
-	Target   string `json:"target"`
-	Port     int    `json:"port"`
-	IsOpen   bool   `json:"is_open"`
-	Banner   string `json:"banner,omitempty"`
+	Target string `json:"target"`
+	Port   int    `json:"port"`
+	IsOpen bool   `json:"is_open"`
+	Banner string `json:"banner,omitempty"`
 }
 
 func worker(wg *sync.WaitGroup, tasks chan string, dialer net.Dialer, timeout time.Duration, results chan<- ScanResult, bannerGrab bool) {
