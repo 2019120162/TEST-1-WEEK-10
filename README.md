@@ -36,10 +36,10 @@ git clone https://github.com/2019120162/TEST-1-WEEK-10.git
 # EXAMPLE USAGE
 
 Scan a Range of Ports with Multiple Workers:
-go run main.go -target=example.com -start-port=20 -end-port=80 -workers=50
+go run main.go -target=scanme.nmap.org -start-port=20 -end-port=80 -workers=50
 
 Scan Specific Ports and Get JSON Output:
-go run main.go -target=example.com -ports=22,80,443 -json=true
+go run main.go -target=scanme.nmap.org -ports=22,80,443 -json=true
 
 Enable Banner Grabbing:
-go run main.go -target=example.com -banner=true
+go run main.go -target=scanme.nmap.org -banner=true
