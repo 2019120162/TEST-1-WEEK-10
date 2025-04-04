@@ -1,5 +1,5 @@
 // Filename: main.go
-// Purpose: This program demonstrates how to create a TCP network connection using Go and adds enhancements like configurable flags, concurrency, banner grabbing, etc.
+// Purpose: This program demonstrates how to create a TCP network connection using Go and added enhancements like configurable flags, concurrency, banner grabbing, etc.
 
 package main
 

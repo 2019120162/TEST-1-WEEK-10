@@ -35,23 +35,23 @@ git clone https://github.com/2019120162/TEST-1-WEEK-10.git
 
 # EXAMPLE USAGE
 
-### Scan a Range of Ports with Multiple Workers:
+## Scan a Range of Ports with Multiple Workers:
 go run main.go -target=scanme.nmap.org -start-port=20 -end-port=80 -workers=50
 
-### Scan Specific Ports and Get JSON Output:
+## Scan Specific Ports and Get JSON Output:
 go run main.go -target=scanme.nmap.org -ports=22,80,443 -json=true
 
-### Enable Banner Grabbing:
+## Enable Banner Grabbing:
 go run main.go -target=scanme.nmap.org -banner=true
 
 
-### Scan a range of ports with 100 workers:
+## Scan a range of ports with 100 workers:
 go run main.go -target=scanme.nmap.org -start-port=20 -end-port=80 -workers=100
 
-### Scan specific ports and enable banner grabbing:
+## Scan specific ports and enable banner grabbing:
 go run main.go -target=scanme.nmap.org -ports=22,80,443 -banner=true
 
-### Get results in JSON format:
+## Get results in JSON format:
 go run main.go -target=scanme.nmap.org -ports=22,80,443 -json=true
 
 ## Sample Output
