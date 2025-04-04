@@ -25,23 +25,30 @@ type ScanResult struct {
 
 func worker(wg *sync.WaitGroup, tasks chan string, dialer net.Dialer, timeout time.Duration, results chan<- ScanResult, bannerGrab bool) {
 	defer wg.Done()
+
 	for addr := range tasks {
 		conn, err := dialer.Dial("tcp", addr)
 		if err == nil {
-			defer conn.Close()
+			// Immediately close the connection
+			conn.Close()
+
 			result := ScanResult{
 				Target: addr,
 				Port:   extractPortFromAddr(addr),
 				IsOpen: true,
 			}
+
+			// If banner grabbing is enabled, try to read the banner from the server
 			if bannerGrab {
-				conn.SetReadDeadline(time.Now().Add(timeout)) // Set timeout for reading the banner
-				banner := make([]byte, 1024)
+				conn.SetReadDeadline(time.Now().Add(timeout)) // Set read deadline based on timeout flag
+				banner := make([]byte, 1024)                  // Buffer to store the banner
 				_, err := conn.Read(banner)
 				if err == nil {
-					result.Banner = string(banner)
+					result.Banner = string(banner) // Store the banner if successfully read
 				}
 			}
+
+			// Send the result to the results channel
 			results <- result
 		}
 	}
