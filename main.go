@@ -74,6 +74,9 @@ func main() {
 	// Parse the flags
 	flag.Parse()
 
+	// Start measuring time
+	startTime := time.Now()
+
 	// Prepare the list of ports to scan
 	var scanPorts []int
 	if *ports != "" {
@@ -134,6 +137,9 @@ func main() {
 		}
 	}
 
+	// Calculate the time taken for the scan
+	duration := time.Since(startTime)
+
 	// Output the scan summary
 	if *jsonOutput {
 		// JSON output format
@@ -156,4 +162,7 @@ func main() {
 			}
 		}
 	}
+
+	// Print the time taken for the scan
+	fmt.Printf("\nTime taken: %v\n", duration)
 }
